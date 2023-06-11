@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body onload = "JavaScript:AutoRefresh(20000);">
+
+   <h1><span class="blink" style='color:rgb(245, 245, 245)'/><b>QR GENERATOR</b></span></h1>
+    <div class="container">
+      <p>Input Your Text Or URL</p>
+    <input type="text" placeholder="Input your text" id="qrText">
+    <div id="imgBox">
+        <img src="" id="qrImage">
+    </div>
+    <button onclick="generateQR()">Generate</button>
+</div>
+
+<!--JS File-->
+<script>
+    let imgBox = document.getElementById("imgBox");
+    let qrImage = document.getElementById("qrImage");
+    let qrText = document.getElementById("qrText");  
+    
+    function generateQR(){
+        if(qrText.value.length > 0) {
+            qrImage.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + qrText.value ;
+        imgBox.classList.add("show-img");
+        }
+        else alert ("Please Input Your Text");
+        return false;
+    }
+    function AutoRefresh( t ) {
+               setTimeout("location.reload(true);", t);
+            }
+    </script>
+</body>
+</html>
